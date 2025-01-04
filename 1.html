@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Platform</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #7b98b6;
+            color: #fff;
+        }
+
+        header, footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: #e74c3c;
+        }
+
+        .search-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .ad-space {
+        text-align: center;
+        margin: 20px auto;
+        max-width: 728px; /* Adjust based on ad size */
+        }
+
+        .search-box input, .search-box button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-box input {
+            width: 300px;
+            color: #333;
+        }
+
+        .search-box input::placeholder {
+            color: #888;
+        }
+
+        .search-box button {
+            background: #e74c3c;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 8px 0;
+        }
+
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            font-size: 14px;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            background: #f5f5f5;
+            margin: 50px auto;
+            max-width: 1200px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 20px;
+            color: white;
+        }
+
+        .image-overlay h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .image-overlay p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Real Estate Platform</h1>
+        <nav>
+            <ul>
+                <li><a href="buy.html">Buy</a></li>
+                <li><a href="rent.html">Rent</a></li>
+                <li><a href="sell.html">Sell</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="Course.html">Course</a></li>
+                <li><a href="Sold Properties.html">Sold Properties</a></li>
+                <li><a href="choose-plan.html">Choose Plan</a></li>
+            </ul>
+        </nav>
+        <div class="ad-space">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-XXXXXX"
+                data-ad-slot="1234567890"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </header>
+
+    <section class="search-container">
+        <h2>Find Your Dream Home</h2>
+        <div class="search-box">
+            <input type="text" placeholder="Search by address, ZIP, or city">
+            <button onclick="searchMaps()">Search</button>
+        </div>
+    </section>
+
+    <section class="image-gallery">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9" alt="Luxury Modern Home">
+            <div class="image-overlay">
+                <h3>Modern Luxury Villa</h3>
+                <p>Contemporary design with premium finishes</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" alt="Contemporary Kitchen">
+            <div class="image-overlay">
+                <h3>Designer Kitchen</h3>
+                <p>State-of-the-art appliances and elegant design</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b" alt="Luxury Pool">
+            <div class="image-overlay">
+                <h3>Resort-Style Pool</h3>
+                <p>Infinity edge pool with stunning views</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d" alt="Master Bedroom">
+            <div class="image-overlay">
+                <h3>Luxurious Master Suite</h3>
+                <p>Spacious bedroom with premium amenities</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3" alt="Modern Living Room">
+            <div class="image-overlay">
+                <h3>Contemporary Living Space</h3>
+                <p>Open concept with high-end finishes</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea" alt="Outdoor Living">
+            <div class="image-overlay">
+                <h3>Outdoor Entertainment</h3>
+                <p>Perfect for luxury outdoor living</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: support@realestate.com</li>
+                <li>Phone: +1 (800) 123-4567</li>
+                <li>Office: 123 Main Street, City, Country</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html" target="_blank">About Us</a></li>
+                <li><a href="careers.html" target="_blank">Careers</a></li>
+                <li><a href="contact.html" target="_blank">Contact Us</a></li>
+                <li><a href="reviews.html" target="_blank">Reviews</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Trusted By</h3>
+            <ul>
+                <li>Company A</li>
+                <li>Company B</li>
+                <li>Company C</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Find Us</h3>
+            <ul>
+                <li><a href="https://www.google.com/maps" target="_blank">View on Google Maps</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Real Estate Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function searchMaps() {
+            const query = document.querySelector('.search-box input').value;
+            if (query) {
+                window.open(`https://www.google.com/maps/search/${encodeURIComponent(query)}`, '_blank');
+            } else {
+                alert("Please enter a search term!");
+            }
+        }
+    </script>
+</body>
+</html>
