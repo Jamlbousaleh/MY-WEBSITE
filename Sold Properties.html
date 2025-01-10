@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sold Properties</title>
+    <style>
+        .sold-properties {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .property-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            background: white;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .property-details {
+            padding: 20px;
+        }
+
+        .property-price {
+            font-size: 1.5em;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .property-location {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .property-specs {
+            display: flex;
+            justify-content: space-between;
+            color: #34495e;
+            margin-top: 15px;
+        }
+
+        .sold-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <section class="sold-properties">
+        <h2>Recently Sold Properties</h2>
+        <div class="property-grid">
+            <div class="property-card" onclick="openModal(0)">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811" alt="Luxury Villa Bali" class="property-image">
+                <div class="property-details">
+                    <div class="property-price">$4,500,000</div>
+                    <div class="property-location">Ubud, Bali, Indonesia</div>
+                    <p>Stunning 5-bedroom villa with infinity pool overlooking rice terraces</p>
+                    <div class="property-specs">
+                        <span>5 Beds</span>
+                        <span>6 Baths</span>
+                        <span>7,500 sq ft</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card" onclick="openModal(1)">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750" alt="Manhattan Penthouse" class="property-image">
+                <div class="property-details">
+                    <div class="property-price">$12,800,000</div>
+                    <div class="property-location">Upper East Side, Manhattan, NY</div>
+                    <p>Luxurious penthouse with Central Park views and private terrace</p>
+                    <div class="property-specs">
+                        <span>4 Beds</span>
+                        <span>4.5 Baths</span>
+                        <span>4,200 sq ft</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card" onclick="openModal(2)">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9" alt="Santorini Villa" class="property-image">
+                <div class="property-details">
+                    <div class="property-price">$3,900,000</div>
+                    <div class="property-location">Oia, Santorini, Greece</div>
+                    <p>Traditional cave villa with panoramic Aegean Sea views</p>
+                    <div class="property-specs">
+                        <span>3 Beds</span>
+                        <span>3 Baths</span>
+                        <span>2,800 sq ft</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card" onclick="openModal(3)">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811" alt="Dubai Penthouse" class="property-image">
+                <div class="property-details">
+                    <div class="property-price">$15,500,000</div>
+                    <div class="property-location">Palm Jumeirah, Dubai, UAE</div>
+                    <p>Ultra-luxury penthouse with private pool and marina views</p>
+                    <div class="property-specs">
+                        <span>6 Beds</span>
+                        <span>7 Baths</span>
+                        <span>10,000 sq ft</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card" onclick="openModal(4)">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Swiss Chalet" class="property-image">
+                <div class="property-details">
+                    <div class="property-price">$8,200,000</div>
+                    <div class="property-location">Zermatt, Switzerland</div>
+                    <p>Luxury ski chalet with Matterhorn views and indoor spa</p>
+                    <div class="property-specs">
+                        <span>5 Beds</span>
+                        <span>5.5 Baths</span>
+                        <span>6,500 sq ft</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="propertyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        const properties = [
+            {
+                title: "Luxury Villa Bali",
+                price: "$4,500,000",
+                location: "Ubud, Bali, Indonesia",
+                description: "This stunning 5-bedroom villa offers the ultimate luxury living experience in Bali. Features include:<br><br>• Infinity pool overlooking rice terraces<br>• Chef's kitchen with premium appliances<br>• Master suite with private terrace<br>• Staff quarters<br>• Home theater<br>• Yoga pavilion<br>• Organic garden<br>• Solar power system",
+                specs: "5 Beds • 6 Baths • 7,500 sq ft",
+                image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811"
+            },
+            {
+                title: "Manhattan Penthouse",
+                price: "$12,800,000",
+                location: "Upper East Side, Manhattan, NY",
+                description: "Prestigious penthouse with unobstructed Central Park views. Features include:<br><br>• 360-degree city views<br>• Private elevator access<br>• Custom Bulthaup kitchen<br>• Wine cellar<br>• Smart home technology<br>• Private terrace<br>• 24/7 doorman<br>• Private parking",
+                specs: "4 Beds • 4.5 Baths • 4,200 sq ft",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750"
+            },
+            {
+                title: "Santorini Villa",
+                price: "$3,900,000",
+                location: "Oia, Santorini, Greece",
+                description: "Traditional cave villa with modern luxuries. Features include:<br><br>• Panoramic Aegean Sea views<br>• Private plunge pool<br>• Outdoor dining terrace<br>• Wine cellar<br>• Traditional architecture<br>• Heated floors<br>• Guest house<br>• Sunset viewing area",
+                specs: "3 Beds • 3 Baths • 2,800 sq ft",
+                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9"
+            },
+            {
+                title: "Dubai Penthouse",
+                price: "$15,500,000",
+                location: "Palm Jumeirah, Dubai, UAE",
+                description: "Ultra-luxury penthouse in iconic Palm Jumeirah. Features include:<br><br>• Private infinity pool<br>• 360-degree views<br>• Smart home automation<br>• Private elevator<br>• Staff quarters<br>• Private beach access<br>• Marina berth<br>• Luxury spa",
+                specs: "6 Beds • 7 Baths • 10,000 sq ft",
+                image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811"
+            },
+            {
+                title: "Swiss Chalet",
+                price: "$8,200,000",
+                location: "Zermatt, Switzerland",
+                description: "Luxury ski chalet with premium finishes. Features include:<br><br>• Matterhorn views<br>• Indoor spa with pool<br>• Wine cellar<br>• Ski room<br>• Home cinema<br>• Elevator<br>• Underground parking<br>• Professional kitchen",
+                specs: "5 Beds • 5.5 Baths • 6,500 sq ft",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+            }
+        ];
+
+        function openModal(index) {
+            const modal = document.getElementById("propertyModal");
+            const modalContent = document.getElementById("modalContent");
+            const property = properties[index];
+            
+            modalContent.innerHTML = `
+                <img src="${property.image}" alt="${property.title}" style="width:100%; height:400px; object-fit:cover; border-radius:10px;">
+                <h2>${property.title}</h2>
+                <h3>${property.price}</h3>
+                <p style="color:#7f8c8d">${property.location}</p>
+                <p>${property.description}</p>
+                <p style="color:#34495e">${property.specs}</p>
+            `;
+            
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("propertyModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("propertyModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+

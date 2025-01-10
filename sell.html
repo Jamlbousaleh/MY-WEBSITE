@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Property</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form input, form textarea, form button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form button {
+            background: #e74c3c;
+            color: white;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background: #c0392b;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sell Your Property</h1>
+    </header>
+    <section>
+        <h2>List Your Property for Sale</h2>
+        <form>
+           
+            <div class="form-section">
+                <h3>Property Details</h3>
+                <div class="input-group">
+                    <input type="text" placeholder="Property Title" required>
+                    <textarea placeholder="Property Description" rows="4" required></textarea>
+                    <div class="price-group">
+                        <span class="currency">$</span>
+                        <input type="number" placeholder="Price" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Property Location</h3>
+                <div class="location-group">
+                    <select id="country" required>
+                        <option value="">Select Country</option>
+                    </select>
+                    
+                    <select id="state" required disabled>
+                        <option value="">Select State/Region</option>
+                    </select>
+
+                    <select id="city" required disabled>
+                        <option value="">Select City</option>
+                    </select>
+
+                    <input type="text" placeholder="Street Address" required>
+                    <input type="text" placeholder="Apartment/Unit (optional)">
+                    <input type="text" placeholder="ZIP/Postal Code" required>
+                </div>
+
+                <div class="map-container">
+                    <div id="map"></div>
+                    <input type="text" id="searchAddress" placeholder="Search location on map">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Property Features</h3>
+                <div class="features-grid">
+                    <div class="feature-input">
+                        <label>Bedrooms</label>
+                        <input type="number" min="0" required>
+                    </div>
+                    <div class="feature-input">
+                        <label>Bathrooms</label>
+                        <input type="number" min="0" step="0.5" required>
+                    </div>
+                    <div class="feature-input">
+                        <label>Square Feet</label>
+                        <input type="number" min="0" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Property Images</h3>
+                <div class="image-upload">
+                    <input type="file" id="propertyImages" multiple accept="image/*">
+                    <label for="propertyImages">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Drop files here or click to upload</span>
+                    </label>
+                    <div id="imagePreview"></div>
+                </div>
+            </div>
+
+            <button type="submit">List Property</button>
+
+            <style>
+                .form-section {
+                    margin-bottom: 30px;
+                    text-align: left;
+                }
+
+                .form-section h3 {
+                    color: #2c3e50;
+                    margin-bottom: 20px;
+                    font-size: 1.5em;
+                }
+
+                .input-group, .location-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .price-group {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .price-group .currency {
+                    position: absolute;
+                    left: 10px;
+                    color: #666;
+                }
+
+                .price-group input {
+                    padding-left: 25px;
+                }
+
+                select, input[type="text"], input[type="number"], textarea {
+                    padding: 12px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    font-size: 16px;
+                }
+
+                .features-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 20px;
+                }
+
+                .feature-input {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                }
+
+                .feature-input label {
+                    color: #666;
+                    font-size: 14px;
+                }
+
+                .map-container {
+                    margin-top: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    overflow: hidden;
+                }
+
+                #map {
+                    height: 300px;
+                    width: 100%;
+                }
+
+                #searchAddress {
+                    margin-top: 10px;
+                }
+
+                .image-upload {
+                    border: 2px dashed #ddd;
+                    padding: 20px;
+                    text-align: center;
+                    border-radius: 4px;
+                }
+
+                .image-upload input[type="file"] {
+                    display: none;
+                }
+
+                .image-upload label {
+                    cursor: pointer;
+                    color: #666;
+                }
+
+                .image-upload i {
+                    font-size: 40px;
+                    margin-bottom: 10px;
+                    color: #666;
+                }
+
+                #imagePreview {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+            </style>
+
+            <script>
+                // Initialize Google Maps
+                function initMap() {
+                    const map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 8,
+                        center: { lat: -34.397, lng: 150.644 }
+                    });
+
+                    const searchBox = new google.maps.places.SearchBox(
+                        document.getElementById('searchAddress')
+                    );
+
+                    map.addListener('bounds_changed', () => {
+                        searchBox.setBounds(map.getBounds());
+                    });
+
+                    let markers = [];
+
+                    searchBox.addListener('places_changed', () => {
+                        const places = searchBox.getPlaces();
+
+                        markers.forEach(marker => marker.setMap(null));
+                        markers = [];
+
+                        places.forEach(place => {
+                            if (!place.geometry) return;
+
+                            markers.push(new google.maps.Marker({
+                                map,
+                                position: place.geometry.location
+                            }));
+
+                            if (place.geometry.viewport) {
+                                map.fitBounds(place.geometry.viewport);
+                            } else {
+                                map.setCenter(place.geometry.location);
+                                map.setZoom(17);
+                            }
+                        });
+                    });
+                }
+
+                // Country-State-City Dropdown Logic
+                const countries = {
+                    "US": "United States",
+                    "CA": "Canada",
+                    "GB": "United Kingdom",
+                    // Add more countries as needed
+                };
+
+                const countrySelect = document.getElementById('country');
+                Object.entries(countries).forEach(([code, name]) => {
+                    const option = new Option(name, code);
+                    countrySelect.add(option);
+                });
+
+                countrySelect.addEventListener('change', function() {
+                    const stateSelect = document.getElementById('state');
+                    const citySelect = document.getElementById('city');
+                    
+                    if (this.value) {
+                        stateSelect.disabled = false;
+                        // Here you would typically load states for the selected country
+                        // from an API or database
+                    } else {
+                        stateSelect.disabled = true;
+                        citySelect.disabled = true;
+                    }
+                });
+
+                // Image Upload Preview
+                document.getElementById('propertyImages').addEventListener('change', function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    preview.innerHTML = '';
+                    
+                    [...e.target.files].forEach(file => {
+                        if (file.type.startsWith('image/')) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                const img = document.createElement('img');
+                                img.src = e.target.result;
+                                img.style.width = '100%';
+                                img.style.height = '100px';
+                                img.style.objectFit = 'cover';
+                                preview.appendChild(img);
+                            }
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                });
+            </script>
+
+            <!-- Add Google Maps API Script -->
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap">
+            </script>
+
+
+
+
+
