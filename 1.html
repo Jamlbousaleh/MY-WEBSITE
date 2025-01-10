@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate Platform</title>
     <style>
+        /* General Styles */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -13,11 +14,33 @@
             color: #fff;
         }
 
-        header, footer {
+        h1, h2, h3 {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Styles */
+        header {
             background: #2c3e50;
-            color: #fff;
             padding: 20px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        nav {
+            margin-top: 10px;
         }
 
         nav ul {
@@ -32,32 +55,52 @@
             color: #fff;
             text-decoration: none;
             font-weight: 500;
+            padding: 10px;
+            transition: color 0.3s, transform 0.3s;
         }
 
         nav ul li a:hover {
             color: #e74c3c;
+            transform: scale(1.05);
         }
 
+        /* Fixed Button Styles */
+        .header-btn {
+            position: fixed;
+            top: 10px;
+            background: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            z-index: 1000;
+        }
+
+        .header-btn:hover {
+            background: #c0392b;
+        }
+
+        .services-btn {
+            right: 200px;
+        }
+
+        .property-btn {
+            right: 10px;
+        }
+
+        /* Search Section */
         .search-container {
             text-align: center;
-            margin: 50px 0;
-        }
-
-        .ad-space {
-        text-align: center;
-        margin: 20px auto;
-        max-width: 728px; /* Adjust based on ad size */
-        }
-
-        .search-box input, .search-box button {
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
+            margin: 80px 0;
         }
 
         .search-box input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
             width: 300px;
             color: #333;
+            margin-right: 10px;
         }
 
         .search-box input::placeholder {
@@ -65,57 +108,33 @@
         }
 
         .search-box button {
+            padding: 10px 20px;
             background: #e74c3c;
-            color: #fff;
+            color: white;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .footer-section h3 {
-            margin-bottom: 10px;
-            font-size: 18px;
-            border-bottom: 2px solid #e74c3c;
+        .search-box button:hover {
+            background: #c0392b;
         }
 
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            margin: 8px 0;
-        }
-
-        .footer-section ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .footer-section ul li a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-bottom {
-            margin-top: 20px;
-            border-top: 1px solid #444;
-            padding-top: 10px;
-            font-size: 14px;
-        }
-
+        /* Image Gallery */
         .image-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             padding: 40px;
             background: #f5f5f5;
-            margin: 50px auto;
-            max-width: 1200px;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
@@ -125,7 +144,7 @@
 
         .gallery-item img {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -134,7 +153,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
             padding: 20px;
             color: white;
         }
@@ -145,12 +164,63 @@
         }
 
         .image-overlay p {
-            margin: 5px 0 0;
             font-size: 0.9em;
+            margin-top: 5px;
         }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer .footer-section {
+            margin: 20px;
+        }
+
+        footer .footer-section h3 {
+            font-size: 1.2em;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin: 8px 0;
+        }
+
+        footer .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        footer .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            font-size: 14px;
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- Fixed Header Buttons -->
+    <a href="Services.html" class="header-btn services-btn">Services</a>
+    <a href="PropertyValuation.html" class="header-btn property-btn">Property Valuation</a>
+
+    <!-- Header Section -->
     <header>
         <h1>Real Estate Platform</h1>
         <nav>
@@ -168,45 +238,35 @@
                 <li><a href="choose-plan.html">Choose Plan</a></li>
             </ul>
         </nav>
-        <div class="ad-space">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-XXXXXX"
-                data-ad-slot="1234567890"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
     </header>
 
+    <!-- Search Section -->
     <section class="search-container">
         <h2>Find Your Dream Home</h2>
         <div class="search-box">
-            <input type="text" placeholder="Search by address, ZIP, or city">
+            <input type="text" placeholder="Search by address, ZIP, or city" id="searchInput">
             <button onclick="searchMaps()">Search</button>
         </div>
     </section>
 
+    <!-- Image Gallery Section -->
     <section class="image-gallery">
         <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9" alt="Luxury Modern Home">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9" alt="Modern Luxury Villa">
             <div class="image-overlay">
                 <h3>Modern Luxury Villa</h3>
                 <p>Contemporary design with premium finishes</p>
             </div>
         </div>
-        
+
         <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" alt="Contemporary Kitchen">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" alt="Designer Kitchen">
             <div class="image-overlay">
                 <h3>Designer Kitchen</h3>
                 <p>State-of-the-art appliances and elegant design</p>
             </div>
         </div>
-        
+
         <div class="gallery-item">
             <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b" alt="Luxury Pool">
             <div class="image-overlay">
@@ -214,23 +274,23 @@
                 <p>Infinity edge pool with stunning views</p>
             </div>
         </div>
-        
+
         <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d" alt="Master Bedroom">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d" alt="Luxurious Master Suite">
             <div class="image-overlay">
                 <h3>Luxurious Master Suite</h3>
                 <p>Spacious bedroom with premium amenities</p>
             </div>
         </div>
-        
+
         <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3" alt="Modern Living Room">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3" alt="Contemporary Living Room">
             <div class="image-overlay">
                 <h3>Contemporary Living Space</h3>
                 <p>Open concept with high-end finishes</p>
             </div>
         </div>
-        
+
         <div class="gallery-item">
             <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea" alt="Outdoor Living">
             <div class="image-overlay">
@@ -240,6 +300,7 @@
         </div>
     </section>
 
+    <!-- Footer Section -->
     <footer>
         <div class="footer-section">
             <h3>Contact Us</h3>
@@ -252,10 +313,10 @@
         <div class="footer-section">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="about.html" target="_blank">About Us</a></li>
-                <li><a href="careers.html" target="_blank">Careers</a></li>
-                <li><a href="contact.html" target="_blank">Contact Us</a></li>
-                <li><a href="reviews.html" target="_blank">Reviews</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
             </ul>
         </div>
         <div class="footer-section">
@@ -266,12 +327,6 @@
                 <li>Company C</li>
             </ul>
         </div>
-        <div class="footer-section">
-            <h3>Find Us</h3>
-            <ul>
-                <li><a href="https://www.google.com/maps" target="_blank">View on Google Maps</a></li>
-            </ul>
-        </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Real Estate Platform. All rights reserved.</p>
         </div>
@@ -279,7 +334,7 @@
 
     <script>
         function searchMaps() {
-            const query = document.querySelector('.search-box input').value;
+            const query = document.getElementById('searchInput').value;
             if (query) {
                 window.open(`https://www.google.com/maps/search/${encodeURIComponent(query)}`, '_blank');
             } else {
